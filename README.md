@@ -2,6 +2,8 @@
 
 - Created app using create-react-app
 - configured tailwindcss in the application
+- Header
+- Login Form
 
 # Features
 
