@@ -7,9 +7,9 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/redux-slices/userSlice";
+import { BG_IMAGE, USER_AVATAR } from "../config/constant";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -42,10 +42,9 @@ const Login = () => {
         password.current.value
       )
         .then((userCredentials) => {
-          const user = userCredentials.user;
           updateProfile(auth.currentUser, {
             displayName: name.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/5701533?v=4",
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -63,7 +62,6 @@ const Login = () => {
             });
         })
         .catch((error) => {
-          console.log(error);
           const errCode = error.code;
           const errMessage = error.message;
           setErrorMessage(errCode + " " + errMessage);
@@ -75,11 +73,8 @@ const Login = () => {
         email.current.value,
         password.current.value
       )
-        .then((userCredentials) => {
-          const user = userCredentials.user;
-        })
+        .then((userCredentials) => {})
         .catch((error) => {
-          console.log(error);
           const errCode = error.code;
           //const errMessage = error.message;
           if (errCode === "auth/invalid-credential")
@@ -94,7 +89,7 @@ const Login = () => {
       <div className="absolute w-[100%]">
         <img
           className="w-full h-full bg-blend-overlay"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/7ca5b7c7-20aa-42a8-a278-f801b0d65fa1/fb548c0a-8582-43c5-9fba-cd98bf27452f/IN-en-20240326-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+          src={BG_IMAGE}
           alt="background"
         />
       </div>
