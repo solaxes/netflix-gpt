@@ -9,10 +9,14 @@ const MainContainer = () => {
   // this is also known as early return
   if (movies === null) return;
 
-  const mainMovie = movies[0];
+  const movieId = parseInt(Math.random() * 19);
+
+  const mainMovie = movies[movieId];
+
+  if (mainMovie === null) return;
 
   const { original_title, overview, id } = mainMovie;
-
+  console.log(id);
   return (
     <div>
       <VideoTitle title={original_title} overview={overview} />
