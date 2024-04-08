@@ -32,6 +32,8 @@
 - Update store with trailer video data
 - Embeded the youtube video
 - Made youtube video autoplay and mute
+- Build secondary component
+- Movies list for popular, top rated and upcoming
 
 # Features
 
